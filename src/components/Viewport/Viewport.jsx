@@ -229,7 +229,34 @@ function Viewport() {
               textDecoration={text.textDecoration}
               fontStyle={text.fontStyle}
               align={text.align}
-            />
+              onDblClick={(e) => {
+                let element = e.target;
+                element.hide();
+                var textarea = document.createElement("textarea");
+                var px = 0;
+                var isFirefox =
+                  navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+                if (isFirefox) {
+                  px += 2 + Math.round(element.fontSize() / 20);
+                }
+                let rect = document
+                  .getElementsByTagName("canvas")[0]
+                  .getBoundingClientRect();
+                document.body.appendChild(textarea);
+                textarea.value = element.attrs.text;
+                textarea.style.fontSize = element.fontSize() + "px";
+                textarea.style.position = "absolute";
+                textarea.style.top = element.attrs.y + rect.y + "px";
+                textarea.style.left = element.attrs.x + rect.x + "px";
+                textarea.addEventListener("keydown", function (e) {
+                  if (e.keyCode === 13) {
+                    element.text(textarea.value);
+                    document.body.removeChild(textarea);
+                    element.show();
+                  }
+                });
+              }}
+              />
           ))}
 
           <Text

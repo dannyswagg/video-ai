@@ -168,24 +168,24 @@ function Header({ handleGetStarted }) {
   return (
     <header className="header">
       <div className="header__logo">
-        <img src={logo} alt="logo" />
+        <img src="https://app.googptai.com/img/logo.png" alt="logo" />
       </div>
       <div className="header__action">
-        <Link to="/">
+        {/* <Link to="/">
           <div onClick={handleBackClick} className="header__action__back">
             <ArrowLeft />
             Go back
           </div>
-        </Link>
+        </Link> */}
         <div className="header__action__buttons">
           <div className="buttons__history">
-            <Button type="ghost" onClick={() => handleGetStarted()}>
+            {/* <Button type="ghost" onClick={() => handleGetStarted()}>
               Getting Started
-            </Button>
-            {/* 
+            </Button> */}
+            
             <Undo />
             <Redo /> 
-            */}
+            
           </div>
           <div className="buttons__divider" />
           <div className="buttons__time slide_duration">

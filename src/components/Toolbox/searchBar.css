@@ -1,0 +1,78 @@
+/* .input-wrapper {
+background-color: white;
+width: 100%;
+border-radius: 10px;
+height: 2.5rem;
+padding: 0 15px;
+box-shadow: 0px 8px 8px #ddd;
+display: flex;
+align-items: center;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 18px;
+    width: 100%;
+    margin-left: 5px;
+}
+input:focus{
+    outline: none;
+} */
+/* input::file-selector-button {
+    font-weight: bold;
+    color: dodgerblue;
+    border: thin solid grey;
+    border-radius: 3px;
+    padding: 0.5em;
+} */
+
+.input-select {
+  border: 1px solid black;
+  width: 100%;
+  height: 32px;
+  padding: 0 11px;
+  border-radius: 6px;
+  margin: 5px 0px;
+}
+input:focus {
+  border: 1px solid #0693e3 !important;
+  /* outline: none; */
+}
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+}
+.ant-btn-primary {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  border: none !important;
+}
+.video_list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+.video_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #e9ebed;
+  border-radius: 10px;
+}
+.video_item video {
+  border-radius: 5px;
+}
+.video {
+  object-fit: cover;
+  cursor: pointer;
+}
+/* .image_list{
+    overflow-y: scroll;
+    height: fit-content;
+} */

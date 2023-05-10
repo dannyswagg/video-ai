@@ -2,17 +2,17 @@ import {
   DeleteFilled,
   DeleteOutlined,
   PauseCircleOutlined,
-  PlusCircleFilled
-} from '@ant-design/icons';
-import React, { useRef } from 'react';
-import { MusicBold } from '../../assets/icons/MusicBold';
-import { PlayBold } from '../../assets/icons/PlayBold';
-import { TextBold } from '../../assets/icons/TextBold';
-import useSlidesStore from '../../store/useSlidesStore';
-import { sleep } from '../../utils/commonFunction';
-import Waveform from '../Waveform/Waveform';
-import toast from 'react-hot-toast';
-import './Timeline.scss';
+  PlusCircleFilled,
+} from "@ant-design/icons";
+import React, { useRef } from "react";
+import { MusicBold } from "../../assets/icons/MusicBold";
+import { PlayBold } from "../../assets/icons/PlayBold";
+import { TextBold } from "../../assets/icons/TextBold";
+import useSlidesStore from "../../store/useSlidesStore";
+import { sleep } from "../../utils/commonFunction";
+import Waveform from "../Waveform/Waveform";
+import toast from "react-hot-toast";
+import "./Timeline.scss";
 
 // import { Slider } from 'antd';
 // import { ZoomIn } from '../../assets/icons/ZoomIn';
@@ -62,7 +62,7 @@ function Timeline() {
   // This function is used to handle the play event when play icon is clicked
   const handlePlay = async () => {
     if (!audioSelected) {
-      toast.error('Please select an audio file first');
+      toast.error("Please select an audio file first");
       return;
     }
     setTimeout(() => {
@@ -83,14 +83,14 @@ function Timeline() {
     };
 
     mediaRecorder.onstop = async function (e) {
-      const blob = new Blob(chunks, { type: 'video/mp4' });
+      const blob = new Blob(chunks, { type: "video/mp4" });
       chunks = [];
       const videoURL = URL.createObjectURL(blob);
-      let a = document.createElement('a');
+      let a = document.createElement("a");
       document.body.appendChild(a);
-      a.style = 'display: none';
+      a.style = "display: none";
       a.href = videoURL;
-      a.download = 'video.mp4';
+      a.download = "video.mp4";
       a.click();
     };
     return mediaRecorder;
@@ -129,7 +129,7 @@ function Timeline() {
 
   // This function is to start the video stream
   const startVideoStream = async () => {
-    const canvas = document.querySelector('.konva_current_canvas canvas');
+    const canvas = document.querySelector(".konva_current_canvas canvas");
     // const ctx = canvas.getContext('2d');
     const videoStream = canvas.captureStream(30);
     return videoStream;
@@ -164,8 +164,8 @@ function Timeline() {
   // This function handles the audio file select and update the audio in slides store
   const handleAudioFileSelect = (event) => {
     const file = event.target.files[0];
-    if (!file?.type.startsWith('audio/')) {
-      toast.error('Please select an audio type file only.');
+    if (!file?.type.startsWith("audio/")) {
+      toast.error("Please select an audio type file only.");
       return;
     }
     updateAudio(file);
@@ -186,7 +186,7 @@ function Timeline() {
     return (
       <DeleteFilled
         style={{
-          fontSize: '20px'
+          fontSize: "20px",
         }}
         onClick={(e) => deleteSlide(e, index)}
       />
@@ -200,7 +200,7 @@ function Timeline() {
           <>
             <PauseCircleOutlined
               style={{
-                fontSize: '40px'
+                fontSize: "40px",
               }}
               onClick={() => {
                 if (play) {
@@ -261,16 +261,16 @@ function Timeline() {
               key={i}
               onClick={() => handleSlideClick(slide, i)}
               className={`timeline_slide_preview_item ${
-                currentSlideIndex === i ? 'active' : 'not_active'
+                currentSlideIndex === i ? "active" : "not_active"
               } `}
               style={{
-                backgroundColor: slide.backgroundColor
+                backgroundColor: slide.backgroundColor,
               }}
             >
               {/* <div className="slide__delete">{renderSlideDelete(i)}</div> */}
               <div
                 style={{
-                  padding: '10px'
+                  padding: "10px",
                 }}
                 className="image_list"
               >
@@ -287,7 +287,7 @@ function Timeline() {
               </div>
               <div
                 style={{
-                  padding: '10px'
+                  padding: "10px",
                 }}
                 className="text_list_box"
               >
@@ -295,13 +295,13 @@ function Timeline() {
                   <span key={index} className="timeline_text_container">
                     <span className="timeline_text">{text?.text}</span>
                   </span>
-                )) ?? ''}
+                )) ?? ""}
               </div>
             </div>
           ))}
           <PlusCircleFilled
             className="add_new_slide"
-            style={{ fontSize: '46px', margin: '10px' }}
+            style={{ fontSize: "46px", margin: "10px" }}
             onClick={handleAddNew}
           />
         </div>
@@ -309,7 +309,7 @@ function Timeline() {
           {audioSelected ? (
             <Waveform audio={URL.createObjectURL(audioSelected)} />
           ) : (
-            'No Audio Selected'
+            "No Audio Selected"
           )}
         </div>
         <div className="timeline__mid__text">
@@ -317,11 +317,11 @@ function Timeline() {
             <span key={index} className="timeline_text_container">
               <span className="timeline_text">{text?.text}</span>
               <DeleteOutlined
-                style={{ marginLeft: '5px' }}
+                style={{ marginLeft: "5px" }}
                 onClick={(e) => deleteTextItem(index)}
               />
             </span>
-          )) ?? ''}
+          )) ?? ""}
         </div>
       </div>
       <div className="timeline__right">
